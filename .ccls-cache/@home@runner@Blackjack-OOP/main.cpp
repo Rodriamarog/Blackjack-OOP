@@ -1,8 +1,7 @@
 #include "blackjack.h"
-using namespace std;
 
 int main() {
-    cout << "Welcome to the Blackjack game!" <<  endl;
+    std::cout << "Welcome to the Blackjack game!" << std::endl;
 
     BlackjackGame game;
     char playAgain = 'y';
@@ -10,10 +9,13 @@ int main() {
     while ((playAgain == 'y' || playAgain == 'Y') && game.getPlayerChips() > 0) {
         game.play();
 
-        cout << "Do you want to play again? (y/n): ";
-        cin >> playAgain;
+        do {
+            std::cout << "Do you want to play again? (y/n): ";
+            std::cin >> playAgain;
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        } while (playAgain != 'y' && playAgain != 'Y' && playAgain != 'n' && playAgain != 'N');
     }
 
-    cout << "Thanks for playing!" <<  endl;
+    std::cout << "Thanks for playing!" << std::endl;
     return 0;
 }
