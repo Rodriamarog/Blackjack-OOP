@@ -148,19 +148,23 @@ void BlackjackGame::play() {
 }
 
 int BlackjackGame::getBet() const {
-  int bet;
-  while (true) {
-    std::cout << std::endl << "You have " << m_player.getChips()
-              << " chips. How many do you want to bet? ";
-    std::cin >> bet;
+    int bet;
 
-    if (bet > 0 && bet <= m_player.getChips()) {
-      break;
-    } else {
-      std::cout << "Invalid bet. Please enter a valid amount." << std::endl;
+    while (true) {
+        std::cout << "You have " << m_player.getChips() << " chips. How many do you want to bet? ";
+        std::cin >> bet;
+
+        if (std::cin.fail() || bet < 1 || bet > m_player.getChips()) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number between 1 and " << m_player.getChips() << "." << std::endl;
+        } else {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
     }
-  }
-  return bet;
+
+    return bet;
 }
 
 void BlackjackGame::dealInitialCards() {
