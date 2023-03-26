@@ -8,3 +8,4 @@ Also WebAssembly to turn C++ logic into workable.
 Now added classes:
 -Hand
 -Deck
+-Players
