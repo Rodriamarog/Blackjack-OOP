@@ -9,3 +9,6 @@ Now added classes:
 -Hand
 -Deck
 -Players
+
+Update:
+Improved HTML + CSS UI
